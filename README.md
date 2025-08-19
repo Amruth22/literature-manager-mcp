@@ -92,22 +92,32 @@ source_id = db.add_source(
     source_type="paper",
     identifier_type="arxiv",
     identifier_value="1706.03762"
-)
+# Add a note
+db.add_note(source_id, "Key Insight", "Transformers eliminate recurrence...")
 
-    identifier_type="isbn",
-    identifier_value="978-0262035613"
-)
+# Update status
+db.update_status(source_id, "completed")
 
-# Add a website
-add_source(
-    title="Understanding Transformers",
-    source_type="webpage",
-    identifier_type="url",
-    identifier_value="https://example.com/transformers"
-)
+# Link to entity
+db.link_to_entity(source_id, "transformer architecture", "introduces")
+
+# Get source details
+source = db.get_source_by_id(source_id)
+print(source)
 ```
 
-### Taking Notes
+### Running Examples
+
+```bash
+# Run basic examples
+python examples/basic_usage.py
+
+# Run advanced examples  
+python examples/advanced_usage.py
+
+# Run direct usage examples
+python direct_usage.py
+```
 
 ```python
 # Add a note to a source
