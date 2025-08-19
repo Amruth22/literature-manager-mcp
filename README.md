@@ -43,36 +43,70 @@ python setup_database.py
 
 ```bash
 # Set your database path
-export LITERATURE_DB_PATH=/path/to/your/literature.db
+## 📚 How to Use
 
-# Use the command line interface
+### Command Line Interface
+
+```bash
+# Add a research paper
 python cli.py add-source "Attention Is All You Need" paper arxiv 1706.03762
 
-# Or use directly in Python scripts
-python direct_usage.py
+# Add a book
+python cli.py add-source "Deep Learning" book isbn 978-0262035613
+
+# Add a note
+python cli.py add-note "Attention Is All You Need" paper arxiv 1706.03762 \
+  "Key Insight" "Transformers eliminate recurrence"
+
+# Update status
+python cli.py update-status "Attention Is All You Need" paper arxiv 1706.03762 completed
+
+# Link to entity
+python cli.py link-entity "Attention Is All You Need" paper arxiv 1706.03762 \
+  "transformer architecture" introduces
+
+# List sources
+python cli.py list --type paper --status unread
+
+# Search sources
+python cli.py search "transformer"
+
+# Show statistics
+python cli.py stats
+
+# Get help
+python cli.py help
 ```
 
-#### Option B: With Claude Desktop (Optional)
+### Direct Python Usage
 
-Add this to your Claude Desktop configuration:
+```python
+from src.database import LiteratureDatabase
 
-```json
-{
-  "mcpServers": {
-    "literature-manager": {
-      "command": "python",
-      "args": ["/path/to/literature-manager-mcp/server.py"],
-      "env": {
-        "LITERATURE_DB_PATH": "/path/to/your/literature.db"
-      }
-    }
-  }
-}
+# Initialize database
+db = LiteratureDatabase("literature.db")
+
+# Add a source
+source_id = db.add_source(
+    title="Attention Is All You Need",
+    source_type="paper",
+    identifier_type="arxiv",
+    identifier_value="1706.03762"
+)
+
+# Add a note
+db.add_note(source_id, "Key Insight", "Transformers eliminate recurrence...")
+
+# Update status
+db.update_status(source_id, "completed")
+
+# Link to entity
+db.link_to_entity(source_id, "transformer architecture", "introduces")
+
+# Get source details
+source = db.get_source_by_id(source_id)
+print(source)
 ```
-      "env": {
-        "LITERATURE_DB_PATH": "/path/to/your/literature.db"
-      }
-    }
   }
 }
 ```
