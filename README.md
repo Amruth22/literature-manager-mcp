@@ -94,40 +94,6 @@ source_id = db.add_source(
     identifier_value="1706.03762"
 )
 
-# Add a note
-db.add_note(source_id, "Key Insight", "Transformers eliminate recurrence...")
-
-# Update status
-db.update_status(source_id, "completed")
-
-# Link to entity
-db.link_to_entity(source_id, "transformer architecture", "introduces")
-
-# Get source details
-source = db.get_source_by_id(source_id)
-print(source)
-```
-  }
-}
-```
-
-## 📖 How to Use
-
-### Adding Sources
-
-```python
-# Add a research paper
-add_source(
-    title="Attention Is All You Need",
-    source_type="paper",
-    identifier_type="arxiv",
-    identifier_value="1706.03762"
-)
-
-# Add a book
-add_source(
-    title="Deep Learning",
-    source_type="book",
     identifier_type="isbn",
     identifier_value="978-0262035613"
 )
