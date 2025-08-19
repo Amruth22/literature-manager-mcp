@@ -16,6 +16,11 @@ This tool helps you:
 ### 1. Prerequisites
 
 - Python 3.8 or higher
+## 🚀 Quick Start
+
+### 1. Prerequisites
+
+- Python 3.8 or higher
 - Basic familiarity with command line
 
 ### 2. Installation
@@ -32,7 +37,22 @@ pip install -r requirements.txt
 python setup_database.py
 ```
 
-### 3. Configure for Claude Desktop
+### 3. Choose Your Usage Method
+
+#### Option A: Direct Python Usage (Recommended)
+
+```bash
+# Set your database path
+export LITERATURE_DB_PATH=/path/to/your/literature.db
+
+# Use the command line interface
+python cli.py add-source "Attention Is All You Need" paper arxiv 1706.03762
+
+# Or use directly in Python scripts
+python direct_usage.py
+```
+
+#### Option B: With Claude Desktop (Optional)
 
 Add this to your Claude Desktop configuration:
 
@@ -42,6 +62,13 @@ Add this to your Claude Desktop configuration:
     "literature-manager": {
       "command": "python",
       "args": ["/path/to/literature-manager-mcp/server.py"],
+      "env": {
+        "LITERATURE_DB_PATH": "/path/to/your/literature.db"
+      }
+    }
+  }
+}
+```
       "env": {
         "LITERATURE_DB_PATH": "/path/to/your/literature.db"
       }
