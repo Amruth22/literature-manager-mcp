@@ -1,7 +1,2 @@
 fastmcp>=0.1.0
-sqlite3
-pathlib
-uuid
-datetime
-json
-typing
+# Note: sqlite3, pathlib, uuid, datetime, json, and typing are built-in Python modules
