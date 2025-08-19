@@ -1,0 +1,7 @@
+fastmcp>=0.1.0
+sqlite3
+pathlib
+uuid
+datetime
+json
+typing
